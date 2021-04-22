@@ -1,10 +1,13 @@
 import './App.css';
 import React, {useState, useEffect} from 'react';
-import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
+import { FormControl, Input } from '@material-ui/core';
 import Message from './Message'
 import db from './firebase';
 import firebase from 'firebase';
 import FlipMove from 'react-flip-move';
+import MessengerLogo from './messengerLogo.png';
+import SendIcon from '@material-ui/icons/Send';
+import { IconButton } from '@material-ui/core';
 
 function App() {
 
@@ -12,7 +15,7 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [username, setUsername] = useState("");
 
-  useEffect(() =>{
+  useEffect(() => {
     db.collection('messages').orderBy('timestamp', 'desc').onSnapshot(snapshot => (
       setMessages(snapshot.docs.map(doc => ({id : doc.id, message: doc.data()})))
     ))
@@ -34,14 +37,16 @@ function App() {
 
   return (
     <div className="App">
-
-      {/* <form> */}
-        <FormControl>
-          <InputLabel>Enter a message...</InputLabel>
-          <Input value={input} onChange={event=>setInput(event.target.value)}/>
-          <Button disabled={!input} variant="contained" color="primary" onClick={sendMessage}>Send Message</Button>
+      <img src={MessengerLogo} width="250" height="auto"/>
+      <h1>Facebook Messenger Clone </h1>
+      <form className="app__form">
+        <FormControl className="app__formControl">
+          <Input className="app__input" placeholder="Type your message ..." value={input} onChange={event=>setInput(event.target.value)}/>
+          <IconButton className="app__iconButton" disabled={!input} variant="contained" color="primary" onClick={sendMessage}>
+            <SendIcon/>
+          </IconButton>
         </FormControl>
-      {/* </form> */}
+      </form>
       
       <FlipMove>
         {
@@ -50,6 +55,7 @@ function App() {
           ))
         }
       </FlipMove>
+      
     </div>
   );
 }
