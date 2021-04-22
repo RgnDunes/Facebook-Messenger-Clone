@@ -45,3 +45,17 @@ Above function executes once because it's second argument is an empty list here.
         </p>
     </li>
 </ul>
+
+<h3><a href="#">Firebase Deploy Commands</a></h3>
+<ul>
+<li><i>sudo npm install -g firebase-tools</i></li>
+<li><i>firebase login</i></li>
+<li><i>firebase init</i></li>
+<li><i>Hosting : Configure and deploy Firebase Hosting sites</i></li>
+<li><i>Use an existing project</i></li>
+<li><i>Select your project</i></li>
+<li><i>What do you want to use as your public directory ? build</i></li>
+<li><i>Configure as a single page app ? Yes</i></li>
+<li><i>npm run build</i></li>
+<li><i>firebase deploy</i></li>
+</ul>
